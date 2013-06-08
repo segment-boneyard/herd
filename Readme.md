@@ -36,7 +36,7 @@ The timeout before killing a worker in ms
 
 To explicitly set the handler function instead of sending it to `run`
 
-#### numWorkers()
+#### size()
 
 The number of workers
 
