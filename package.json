@@ -1,0 +1,25 @@
+{
+  "name": "herd",
+  "version": "0.0.1",
+  "description": "A simple wrapper over node cluster for zero-downtime reloads",
+  "repository": "https://github.com/segmentio/herd.git",
+  "keywords": [
+    "herd",
+    "cluster",
+    "child_process",
+    "fork",
+    "downtime",
+    "reload"
+  ],
+  "author": "Segment.io <friends@segment.io>",
+  "dependencies": {
+    "ms": "~0.6.1",
+    "async": "~0.2.9",
+    "debug": "~0.7.2"
+  },
+  "devDependencies": {
+    "should": "~1.2.2",
+    "mocha": "~1.10.0"
+  },
+  "main": "lib/index"
+}
