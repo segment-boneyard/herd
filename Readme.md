@@ -11,7 +11,7 @@ Just pass herd the function to run on the child-processes.
 var http = require('http')
   , herd = require('herd');
 
-herd.run(function () {
+herd(function () {
   http.createServer.listen(8000);
 });
 ```
