@@ -1,3 +1,9 @@
+0.2.0 / 2013-12-11
+==================
+
+  * Removing annoying initial healthcheck, simplifying code.
+
+
 0.1.0 / 2013-09-27
 ==================
 

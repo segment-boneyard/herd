@@ -8,8 +8,8 @@
 Just pass herd the function to run on the child-processes.
 
 ```javascript
-var http = require('http')
-  , herd = require('herd');
+var http = require('http');
+var herd = require('herd');
 
 herd(function () {
   http.createServer.listen(8000);
@@ -19,7 +19,7 @@ herd(function () {
 From the terminal, send a `SIGHUP` signal to gracefully reload the process:
 
 ```shell
-$ kill -1 1922`
+$ kill -1 1922
 ```
 
 We usually keep the master process really small, and never reload it.
@@ -28,19 +28,23 @@ We usually keep the master process really small, and never reload it.
 
 All of the options are getters (without args) or setters (with args). When you're done, just call `run`.
 
-#### timeout()
+#### .timeout(ms)
 
 The timeout before killing a worker in ms
 
-#### handler()
+#### .boot(ms)
+
+The timeout before considering a worker 'ready'.
+
+#### .handler(fn)
 
 To explicitly set the handler function instead of sending it to `run`
 
-#### size()
+#### .size(workers)
 
 The number of workers
 
-#### signal()
+#### .signal(signal)
 
 The signal to reboot the workers ('SIGHUP')
 

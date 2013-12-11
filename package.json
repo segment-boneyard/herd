@@ -1,6 +1,6 @@
 {
   "name": "herd",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A simple wrapper over node cluster for zero-downtime reloads",
   "repository": "https://github.com/segmentio/herd.git",
   "keywords": [
@@ -17,9 +17,8 @@
     "async": "~0.2.9",
     "debug": "~0.7.2"
   },
+  "main": "lib/index",
   "devDependencies": {
-    "should": "~1.2.2",
-    "mocha": "~1.10.0"
-  },
-  "main": "lib/index"
+    "ps-tree": "0.0.3"
+  }
 }
