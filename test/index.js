@@ -21,7 +21,6 @@ if (cluster.isMaster) {
       console.log('  Total processes: %d', children.length);
       assert(children.length < 70);
     });
-
   }, 1000);
 }
 
