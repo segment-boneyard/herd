@@ -6,11 +6,17 @@ var assert = require('assert');
 
 
 if (cluster.isMaster) {
-  setInterval(function () {
+  var hup = setInterval(function () {
     process.kill(process.pid, 'SIGHUP');
   }, 163);
 
-  setInterval(function () {
+  setTimeout(function(){
+    clearInterval(hup);
+    clearInterval(tick);
+    process.kill(process.pid, 'SIGQUIT');
+  }, 3000);
+
+  var tick = setInterval(function () {
     console.log('\n\nWorkers:');
     for (var id in cluster.workers) {
       var worker = cluster.workers[id];
@@ -22,6 +28,13 @@ if (cluster.isMaster) {
       assert(children.length < 70);
     });
   }, 1000);
+} else {
+  process.on('SIGQUIT', function(){
+    console.log('working shutting down');
+    setTimeout(function(){
+      process.exit(0);
+    }, 1000);
+  });
 }
 
 
