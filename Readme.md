@@ -1,4 +1,3 @@
-
 # herd
 
   Herd your child processes! A simple wrapper over node cluster for zero-downtime reloads.
@@ -42,7 +41,7 @@ To explicitly set the handler function instead of sending it to `run`
 
 #### .size(workers)
 
-The number of workers
+The number of workers. Defaults to the number of cpus.
 
 #### .signal(signal)
 
