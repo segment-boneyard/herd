@@ -10,9 +10,10 @@ Just pass herd the function to run on the child-processes.
 var http = require('http');
 var herd = require('herd');
 
-herd(function () {
-  http.createServer.listen(8000);
-});
+herd('server')
+  .run(function (){
+    http.createServer.listen(8000);
+  });
 ```
 
 From the terminal, send a `SIGHUP` signal to gracefully reload the process:
@@ -21,32 +22,45 @@ From the terminal, send a `SIGHUP` signal to gracefully reload the process:
 $ kill -1 1922
 ```
 
-We usually keep the master process really small, and never reload it.
+We usually keep the master process really small, and never restart it. By default the process will exit after 1 second, but close handlers and custom timeouts can be specified as well.
 
-## Options
+## API
 
-All of the options are getters (without args) or setters (with args). When you're done, just call `run`.
+#### Herd(name)
+
+Create a new herd with title `name`
 
 #### .timeout(ms)
 
-The timeout before killing a worker in ms
+Set the timeout before killing a worker in ms. (defaults to 1 second if you don't specify a close handler, otherwise none).
 
-#### .boot(ms)
+#### .server(isServer)
 
-The timeout before considering a worker 'ready'.
-
-#### .handler(fn)
-
-To explicitly set the handler function instead of sending it to `run`
+By default, new processes will not be created until a `listening` event is emitted by the child process (which is the default for _servers_). Call this flag if you'd rather wait for `online` event, in the case of your workers which might not ever call `net.Server.listen`.
 
 #### .size(workers)
 
-The number of workers. Defaults to the number of cpus.
+Set the number of workers to spawn. Defaults to the number of cpus.
 
-#### .signal(signal)
+#### .close(fn)
 
-The signal to reboot the workers ('SIGHUP')
+Calls the `fn` as the worker is as part of the exit handler. Which can be used to perform some type of cleanup before exiting. If a timeout is also specified, the process will exit whenever the first condition is triggered.
 
+```js
+
+/**
+ * Flush our remaining messages to disk.
+ */
+
+function close(fn){
+  flush(msgs, fn);
+}
+
+
+herd()
+  .close(close)
+  .run(run);
+```
 
 ## License
 

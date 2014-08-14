@@ -13,12 +13,14 @@
   ],
   "author": "Segment.io <friends@segment.io>",
   "dependencies": {
-    "ms": "~0.6.1",
     "async": "~0.2.9",
-    "debug": "~0.7.2"
+    "debug": "~0.7.2",
+    "forward-events": "0.0.1",
+    "ms": "~0.6.1"
   },
   "main": "lib/index",
   "devDependencies": {
-    "ps-tree": "0.0.3"
+    "ps-tree": "0.0.3",
+    "superagent": "^0.18.2"
   }
 }
