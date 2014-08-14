@@ -1,4 +1,9 @@
 
+1.0.0 / 2014-08-14
+==================
+
+ * refactor: updating api, adding tests, simplifying architecture
+
 0.3.1 / 2014-02-24
 ==================
 
