@@ -16,7 +16,7 @@
     "async": "~0.2.9",
     "debug": "~0.7.2",
     "forward-events": "0.0.1",
-    "ms": "~0.6.1"
+    "ms": "~0.7.1"
   },
   "main": "lib/index",
   "devDependencies": {
